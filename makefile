@@ -4,14 +4,14 @@
 CC=gcc
 CFLAGS=-c -Wall -I.
 
-all: lab6
+all: electrotest 
 
 # add libpower.o and libresistance.o on this line
-lab6: main.o libcomponent.o 
-	$(CC) main.o libcomponent.o 
+electrotest: electrotest.o libcomponent.o 
+	$(CC) electrotest.o libcomponent.o -o electrotest 
 
 clean:
-	rm *o lab6 
+	rm *o electrotest 
 #install:
 #	cp lab6/bin
 
