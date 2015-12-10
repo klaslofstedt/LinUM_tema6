@@ -8,12 +8,14 @@ int main(void)
     int count = 3; 
     int resistance = 1398;
     // Libresistance test part
+    printf("test phase 1 ------------------------\n");
     
     // libpower test part
+    printf("test phase 2 ------------------------\n");
     
-    // libcomponent test part (works like shit by now)
-    
-    float res_array[3]; // temporary array until we have a dynamic
+    // libcomponent test part 
+    printf("test phase 3 ------------------------\n");
+    float res_array[3]; 
     count = e_resistance(resistance, &res_array[0]); 
     int i;
     for(i = 0; i < 3; i++){

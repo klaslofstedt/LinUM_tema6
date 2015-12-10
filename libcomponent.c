@@ -1,3 +1,4 @@
+// Klas Löfstedt, 1991-03-14-1496, Linux som utvecklingsmiljö, ht15
 // libcomponent.c
 #include <stdio.h>
 
