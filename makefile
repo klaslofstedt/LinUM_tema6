@@ -1,19 +1,23 @@
 # makefile
-# NOT FINISHED
+# NOT FINISHED (add libresistance)
 
-CC=gcc
-CFLAGS=-c -Wall -I.
+all : libpower.so libcomponent.so electrotest.o
+        mkdir -p lib
+        mv libpower.so libcomponent.so lib/
+        gcc -o electrotest electrotest.o -Llib -lpower -lcomponent -Wl,-rpath,lib
 
-all: electrotest 
+lib : libpower.so libcomponent.so
 
-# add libpower.o and libresistance.o on this line
-electrotest: electrotest.o libcomponent.o 
-	$(CC) electrotest.o libcomponent.o -o electrotest 
+install : libpower.so libcomponent.so electrotest.o
+        mv libpower.so libcomponent.so /usr/lib/
+        gcc -o electrotest electrotest.o -lpower -lcomponent
+        mv electrotest /usr/bin/
 
-clean:
-	rm *o electrotest 
-#install:
-#	cp lab6/bin
+libpower.so : libpower.c libpower.h
+        gcc -shared -fPIC -o libpower.so libpower.c
 
-#uninstall:
-#	rm /bin/lab6
+libcomponent.so : libcomponent.c libcomponent.h
+        gcc -shared -fPIC -o libcomponent.so libcomponent.c
+
+electrotest.o : electrotest.c
+        gcc -c electrotest.c
