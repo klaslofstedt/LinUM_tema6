@@ -66,16 +66,10 @@ int e_resistance(float orig_resistance, float *res_array)
     int i;
     for(i = 0; i < 3; i++){
         int temp_resistance = (int)orig_resistance - left_resistance;
-        //printf("temp_resistance: %d\n", temp_resistance);
         int multiple = multiple_calc(&temp_resistance);
-        //printf("multiple: %d\n", multiple);
         int new_resistance = E12(temp_resistance, &count);
-        //printf("new_resistance: %d\n", new_resistance);
-        //printf("count: %d\n", count);
         left_resistance += new_resistance * multiple;
         res_array[i] = new_resistance * multiple;
-        //printf("res_array: %f\n", res_array[i]);
     }
-    //printf("count_tot: %d\n", count);
     return count;
 }
