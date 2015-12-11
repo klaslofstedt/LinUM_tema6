@@ -13,7 +13,7 @@ int main(void)
 
     // Libresistance test part
     printf("test phase 1 ------------------------\n");
-    
+
     // libpower test part
     printf("test phase 2 ------------------------\n");
     printf("Volt = %fV\n", volt);
@@ -26,10 +26,9 @@ int main(void)
     printf("test phase 3 ------------------------\n");
     float res_array[3]; 
     count = e_resistance(resistance, &res_array[0]); 
-    int i;
-    for(i = 0; i < 3; i++){
-        printf("resistance value: %f\n", res_array[i]);
-    }
-    printf("count: %d\n", count);
-	return 0;
+    printf("Resistor 1 = %fohm\n", res_array[0]);
+    printf("Resistor 2 = %fohm\n", res_array[1]);
+    printf("Resistor 3 = %fohm\n", res_array[2]);
+    printf("Count = %d\n", count);
+    return 0;
 }
