@@ -37,7 +37,7 @@ electrotest.o : electrotest.c
 	$(CC) -c $<
 	
 clean:
-	rm -r lib/
+	rm -fr lib/
 	rm -f *.o
 	rm -f $(EXECUTABLE)
 	
