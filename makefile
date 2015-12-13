@@ -8,7 +8,7 @@ LIBDIR=/usr/lib/
 SOS=libresistance.so libpower.so libcomponent.so
 
 
-all : | lib electrotest.o
+all : lib electrotest.o
 	mkdir -p lib
 	mv $(SOS) lib/
 	$(CC) -o $(EXECUTABLE) electrotest.o -Llib -lresistance -lpower -lcomponent -Wl,-rpath,lib
@@ -21,8 +21,8 @@ install : all
 	make clean
 	
 uninstall :
-	sudo rm -r $(LIBDIR)libresistance.so $(LIBDIR)libpower.so $(LIBDIR)libcomponent.so
-	sudo rm -r $(INSTALLDIR)/$(EXECUTABLE)
+	sudo rm -f $(LIBDIR)libresistance.so $(LIBDIR)libpower.so $(LIBDIR)libcomponent.so
+	sudo rm -f $(INSTALLDIR)$(EXECUTABLE)
 
 libresistance.so : libresistance.c libresistance.h
 	$(CC) $(FLAGS) -c -o $@ $<
@@ -34,11 +34,11 @@ libcomponent.so : libcomponent.c libcomponent.h
 	$(CC) $(FLAGS) -c -o $@ $<
 
 electrotest.o : electrotest.c
-	$(CC) -c electrotest.c
+	$(CC) -c $<
 	
 clean:
-	rm -r lib
-	rm *.o
-	rm $(EXECUTABLE)
+	rm -r lib/
+	rm -f *.o
+	rm -f $(EXECUTABLE)
 	
 		
