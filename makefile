@@ -4,7 +4,9 @@ CC = gcc
 FLAGS = -shared -fPIC
 EXECUTABLE=electrotest
 INSTALLDIR=/usr/bin/
+LIBDIR=/usr/lib/
 SOS=libresistance.so libpower.so libcomponent.so
+
 
 all : | lib electrotest.o
 	mkdir -p lib
@@ -14,9 +16,12 @@ all : | lib electrotest.o
 lib : $(SOS)
 
 install : all
+	sudo mv lib/*.so $(LIBDIR)
 	sudo install $(EXECUTABLE) $(INSTALLDIR)
-
+	make clean
+	
 uninstall :
+	sudo rm -r $(LIBDIR)libresistance.so $(LIBDIR)libpower.so $(LIBDIR)libcomponent.so
 	sudo rm -r $(INSTALLDIR)/$(EXECUTABLE)
 
 libresistance.so : libresistance.c libresistance.h
